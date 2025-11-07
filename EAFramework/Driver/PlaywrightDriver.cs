@@ -1,16 +1,17 @@
 ﻿using EAFramework.Config;
 using Microsoft.Playwright;
+using System.Reflection;
 
 namespace EAFramework.Driver
 {
     public interface IPlaywrightDriver
     {
         Task<IPage> InitializePlaywright();
+        Task<string> TaskScreenshotAsPathAsync(string fileName);
     }
 
     public class PlaywrightDriver :  IDisposable, IPlaywrightDriver
     {
-
         private IPage _page;
         private IPlaywright _playwright;
         private IBrowser _browser;
@@ -45,6 +46,16 @@ namespace EAFramework.Driver
             await _page.GotoAsync(_testSettings.AppBaseUrl);
 
             return _page;
+        }
+
+
+        public async Task<string> TaskScreenshotAsPathAsync(string fileName) 
+        {
+            var path = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}//{fileName}.png";
+
+            await _page.ScreenshotAsync(new PageScreenshotOptions { Path = path });
+
+            return path;
         }
        
 

@@ -150,7 +150,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
     await testRunner.AndAsync("I create new product with following details", ((string)(null)), table1, "And ");
 #line hidden
 #line 12
-    await testRunner.ThenAsync("I verify in DB if the product is created with name \"Power Supply\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("I verify in DB if the product is created with name \"Power Supplysssss\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
